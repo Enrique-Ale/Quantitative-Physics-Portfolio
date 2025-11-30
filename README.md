@@ -70,6 +70,22 @@ Analysis of Zinc Telluride (ZnTe) thin films using the **Swanepoel Method**. Thi
 
 ---
 
+##  Project 5: Cosmic Microwave Background Analysis (COBE/FIRAS)
+**File:** `cosmic_background_analysis.py`
+
+### Description
+An end-to-end data pipeline that retrieves raw observational data directly from **NASA's LAMBDA archives**, parses unstructured text formats, and fits the theoretical **Planck’s Black Body Law** to extract the temperature of the Cosmic Microwave Background (CMB).
+
+### Technical Highlights
+* **Robust Data Ingestion:** Implements a fault-tolerant extraction mechanism using `requests` to fetch live data from NASA servers, featuring an automated **fallback system** to local backups in case of connection failure.
+* **Advanced Parsing:** Includes custom logic to ingest and clean raw legacy formats (5-column text with variable headers) directly into Pandas DataFrames.
+* **Non-Linear Optimization:** Utilizes `scipy.optimize.curve_fit` (Levenberg-Marquardt) with correct unit scaling ($MJy/sr$) and weighted uncertainty to reproduce the Nobel-winning temperature result ($T \approx 2.725 K$) with high precision.
+
+![COBE Analysis](cobe_analysis_result.png)
+*(Result: The model converges to T = 2.7244 K, showing near-perfect alignment with NASA observational data)*
+
+---
+
 ## 🛠 Tools & Technologies
 * **Languages:** Python (NumPy, Matplotlib), MATLAB.
 * **Concepts:** Monte Carlo Simulations, Time Series Analysis, Experimental Design, Numerical Optimization.
@@ -77,12 +93,13 @@ Analysis of Zinc Telluride (ZnTe) thin films using the **Swanepoel Method**. Thi
 ## Usage
 To run the Python simulation locally:
 
-```bash
-# Clone the repository
-git clone [https://github.com/tu-usuario/Quantitative-Physics-Portfolio.git](https://github.com/tu-usuario/Quantitative-Physics-Portfolio.git)
-
-# Install dependencies
-pip install numpy matplotlib
-
-# Run the script
+## Usage
+To run the simulations and analysis pipelines locally:
+ ```bash
+git clone [https://github.com/Enrique-Ale/Quantitative-Physics-Portfolio.git](https://github.com/Enrique-Ale/Quantitative-Physics-Portfolio.git)
+cd Quantitative-Physics-Portfolio
+pip install numpy matplotlib pandas scipy requests
+# Run Project 1: Random Walk Simulation
 python random_walk_vectorized.py
+# Run Project 5: COBE Cosmic Background Analysis
+python cosmic_background_analysis.py
